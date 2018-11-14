@@ -10,7 +10,6 @@ install:
 # command to run tests
 script:
   - sonar-scanner
-  - python -m unittest discover -s test/ -p "*.py"
 
 addons:
   sonarcloud:
