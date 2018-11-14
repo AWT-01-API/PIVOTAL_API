@@ -1,6 +1,8 @@
 Feature: Create new Epic
   Background:
-    Given I login as "user1"
+    Given I send a basic auth get request "/me"
+    And I save the response as "UserInfo1"
+    And I set the api token as "UserInfo1.api_token"
     And I create a "/project" with data:
     |name            |testproject|
     |new_account_name|testaccount|
