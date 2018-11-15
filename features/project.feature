@@ -1,9 +1,10 @@
 Feature: Create new Project
-  Scenario: project
-    Given I login as "user1"
-    And I create a "/projects" with data:
-    Given a <name>
-    |name       |
-    |test4|
-    And I verify the status code is "200"
+
+  Scenario: scenario project
+    Given I send a basic auth get request "/me"
+    And I save the response as "UserInfo1"
+    And I set the api token as "UserInfo1.api_token"
+    And I send a post request "/projects" with
+        |field    |content             |
+        |name     |project test python2|
 
