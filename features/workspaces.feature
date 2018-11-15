@@ -2,7 +2,7 @@ Feature: New Workspace
 
   @deleteWorkspace
   Scenario: Create a new workspace
-    Given I log in as "user1"
+    Given I login as "user1"
     And I create a new workspace with fields:
       | name | test |
     And I store the response as "Workspace1"
