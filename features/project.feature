@@ -4,6 +4,6 @@ Feature: Create new Project
     And I create a "/projects" with data:
     Given a <name>
     |name       |
-    |testproject|
+    |test4|
     And I verify the status code is "200"
 

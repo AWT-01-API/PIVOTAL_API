@@ -1,4 +1,5 @@
-from behave import given, step, use_step_matcher
+from behave import given, step
+from src.util.loggerhandler import LoggerHandler
 from src.API.request_manager import RequestManager
 from src.API.project.projects import Projects
 from src.util.ReadCfg import ReadCfg
@@ -17,10 +18,14 @@ def step_impl(context, name):
     for row in context.table:
         r_name = row['name']
 
-    project = Projects()
-    res = project.create_project(r_name)
-    print(res)
+    try:
+        project = Projects()
+        context.res = project.create_project(r_name)
+        LoggerHandler.get_instance().info("Project created" + r_name)
+    except Exception as e:
+        LoggerHandler.get_instance().error("arrived at exception: " + str(e))
+        raise ("failed with exception: " + str(e))
 
 @step('I verify the status code is "200"')
 def step_impl(context):
-    print("")
+    assert context.res == 200
