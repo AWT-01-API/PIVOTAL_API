@@ -23,7 +23,6 @@ def step_impl(context, key):
         map = context.response_map[namekey]
         token = map.json()[jsonkey]
         context.req_helper.set_token(str(token))
-        print str(token)
     else:
         ## log message "key must have 2 keys: "Example.name""
         return None
