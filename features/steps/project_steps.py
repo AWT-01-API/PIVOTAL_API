@@ -17,7 +17,6 @@ def step_impl(context, name):
     r_name = ""
     for row in context.table:
         r_name = row['name']
-
     try:
         project = Projects()
         context.res = project.create_project(r_name)
@@ -28,4 +27,4 @@ def step_impl(context, name):
 
 @step('I verify the status code is "200"')
 def step_impl(context):
-    assert context.res == 200
+    assert context.res.status_code == 200
