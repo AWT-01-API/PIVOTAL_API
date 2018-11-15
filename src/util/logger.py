@@ -1,15 +1,12 @@
-"""
-Section imports.
-"""
-from src.util.ReadCfg import ReadCfg
 import logging
+from src.util.ReadCfg import ReadCfg
 
-"""
-This class is to logs.
-"""
-class logger:
+class Logger:
+    """
+    This class is to logs.
+    """
 
-    #filename read from properties.
+    # filename read from properties.
     def __init__(self):
         # set up logging to file - see previous section for more details
         logging.basicConfig(level=logging.DEBUG,
@@ -26,37 +23,37 @@ class logger:
         # add the handler to the root logger
         logging.getLogger('').addHandler(console)
 
-    """Return a message type debug.
-    @msg receive a text.
-    """
     @staticmethod
     def debug(msg):
+        """Return a message type debug.
+            @msg receive a text.
+        """
         logging.debug(msg)
 
-    """Return a message type error.
-    @msg receive a text.
-    """
     @staticmethod
     def error(msg):
+        """Return a message type error.
+            @msg receive a text.
+        """
         logging.error(msg)
 
-    """Return a message type info.
-    :msg receive a text.
-    """
     @staticmethod
     def info(msg):
+        """Return a message type info.
+            :msg receive a text.
+        """
         logging.info(msg)
 
-    """Return a message type warning.
-    :msg receive a text.
-    """
     @staticmethod
     def warning(msg):
+        """Return a message type warning.
+            :msg receive a text.
+        """
         logging.warning(msg)
 
-    """Return a message type critical.
-    :msg receive a text.
-    """
     @staticmethod
     def critical(msg):
+        """Return a message type critical.
+            :msg receive a text.
+        """
         logging.critical(msg)

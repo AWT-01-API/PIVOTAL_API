@@ -23,7 +23,4 @@ def step_impl(context, name):
 
 @step('I verify the status code is "200"')
 def step_impl(context):
-    """
-    :type context: behave.runner.Context
-    """
-    #raise NotImplementedError(u'STEP: And I verify the status code is "200"')
+    print("")
