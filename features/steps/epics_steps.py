@@ -1,8 +1,30 @@
-from behave import given
-from src.api.request_manager import RequestManager
+from behave import then, step, use_step_matcher
+import jsonschema
+import simplejson as json
+from src.util.read_file import ReadFle
 
-@given(u'I send a post request {endpoint} with')
-def set_impl(context, endpoint):
+use_step_matcher("re")
+
+
+@step('I send a post request epic \"([^\"]*)\" with')
+def step_impl(context, endpoint):
+    endpoint = endpoint.replace("{project_id}", str(context.last_response.json()['id']))
+
+    body = {}
     for row in context.table:
-        print(row['name'])
-        print(row['project_id'])
+        body = {row["field"]: row["content"]}
+        context.response = context.req_helper.post_request(endpoint, body)
+
+
+@then('I verify epic is created')
+def step_impl(context):
+    assert context.response.status_code == 200
+
+
+@then('I verify epic body is correct')
+def step_impl(context):
+    schema_data = ReadFle.get_file_validator('schema-epic.json')
+    schema_project = json.loads(schema_data)
+    jsonschema.validate(context.response.json(), schema_project)
+
+
