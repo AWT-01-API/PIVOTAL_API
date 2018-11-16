@@ -2,7 +2,6 @@
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
-from src.util.ReadCfg import ReadCfg
 
 
 class RequestManager:
