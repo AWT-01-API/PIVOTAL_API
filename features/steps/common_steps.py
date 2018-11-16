@@ -39,10 +39,10 @@ def step_impl(context, key):
         return None
 
 
-
 @step('I send a post request \"([^\"]*)\" with')
 def step_impl(context, endpoint):
     body = {}
     for row in context.table:
         body = {row["field"]: row["content"]}
     context.last_response = context.req_helper.post_request(endpoint, body)
+
