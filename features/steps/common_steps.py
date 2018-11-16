@@ -1,13 +1,13 @@
 
 from behave import given, step, use_step_matcher
-from src.api.request_manager import RequestManager
+from src.API.request_manager import RequestManager
 
 use_step_matcher("re")
 
 
 @given('I send a basic auth get request \"([^\"]*)\"')
 def step_impl(context, endpoint):
-    context.req_helper = RequestManager("https://www.pivotaltracker.com/services/v5", "kevinherrera2", "70723844")
+    context.req_helper = RequestManager("https://www.pivotaltracker.com/services/v5", "", "")
     context.last_response = context.req_helper.get_request_basic_auth(endpoint)
 
 
@@ -36,3 +36,4 @@ def step_impl(context, endpoint):
     for row in context.table:
         body = {row["field"]: row["content"]}
     context.last_response = context.req_helper.post_request(endpoint, body)
+    context.id = context.last_response.json()['id']
