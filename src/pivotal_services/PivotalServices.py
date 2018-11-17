@@ -1,6 +1,5 @@
-from abc import ABCMeta, abstractmethod
-from src.api.request_manager import RequestManager
-from src.util.ReadCfg import ReadCfg
+from abc import ABCMeta
+from src.api.RequestManager import RequestManager
 
 
 class PivotalServices(object):
@@ -8,7 +7,6 @@ class PivotalServices(object):
 
     def __init__(self, endpoint):
         self.endpoint = endpoint
-        RequestManager.instance(ReadCfg.get_value("url"))
 
     def create(self, body):
         return RequestManager.instance.post_request(self.endpoint, body)
@@ -21,3 +19,4 @@ class PivotalServices(object):
 
     def get(self, id):
         return RequestManager.instance.get_request(self, id)
+

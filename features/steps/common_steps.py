@@ -1,23 +1,19 @@
-
 from behave import given, step, use_step_matcher
-from src.api.request_manager import RequestManager
+from src.api.RequestManager import RequestManager
 from src.util.ReadCfg import ReadCfg
+from src.pivotal_services.APISetter import APISetter
 
 use_step_matcher("re")
 
 
-@given('I login as "user1"')
-def step_impl(context):
-    key = ReadCfg.get_value("apiToken")
-    context.req_helper = RequestManager(ReadCfg.get_value("url") + "/services/v5", "", "")
-    context.req_helper.set_token(key)
-    context.last_response = context.req_helper.get_request("/me")
+@given('I login as \"([^\"]*)\"')
+def step_impl(context, user):
+    APISetter(user)
 
 
 @given('I send a basic auth get request \"([^\"]*)\"')
 def step_impl(context, endpoint):
-    context.req_helper = RequestManager(ReadCfg.get_value("url") + ":/services/v5",
-                                        ReadCfg.get_value("user3"), ReadCfg.get_value("password3"))
+    context.req_helper = RequestManager(ReadCfg.get_value("url") + ":/services/v5",)
     context.last_response = context.req_helper.get_request_basic_auth(endpoint)
 
 
