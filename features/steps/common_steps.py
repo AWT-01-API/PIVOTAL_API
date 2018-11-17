@@ -41,4 +41,4 @@ def step_impl(context, endpoint):
     for row in context.table:
         body = {row["field"]: row["content"]}
     context.last_response = context.req_helper.post_request(endpoint, body)
-
+    context.id = context.last_response.json()['id']
