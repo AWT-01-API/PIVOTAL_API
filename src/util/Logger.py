@@ -1,6 +1,7 @@
 import logging
 from src.util.ReadCfg import ReadCfg
 
+
 class Logger:
     """
     This class is to logs.

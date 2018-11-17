@@ -1,4 +1,5 @@
-from src.util.logger import Logger
+from src.util.Logger import Logger
+
 
 class LoggerHandler:
     # Here will be the instance stored.
