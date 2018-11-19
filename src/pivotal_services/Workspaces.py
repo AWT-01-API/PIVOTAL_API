@@ -8,4 +8,4 @@ class Workspaces(PivotalServices):
             workspace_id = '/' + workspace_id
         else:
             workspace_id = ''
-        super(Workspaces, self).__init__("/workspaces" + workspace_id)
+        super(Workspaces, self).__init__("/my/workspaces" + workspace_id)

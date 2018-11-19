@@ -49,10 +49,10 @@ def step_impl(context, endpoint):
 
 @step('I verify if the response status code is \"([^\"]*)\"')
 def step_impl(context, status_code):
-    assert (status_code == str(context.last_response.status_code)) is not None
+    assert status_code == str(context.last_response.status_code)
 
 
-@step('I verify if the \"([^\"]*)\" body is correct')
+@step('I verify if the response body is from a \"([^\"]*)\"')
 def step_impl(context, schema):
     schema_data = ReadFile.get_file_validator('schema-' + schema + '.json')
     schema_project = json.loads(schema_data)
