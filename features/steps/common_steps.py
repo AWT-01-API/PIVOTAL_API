@@ -2,6 +2,9 @@ from behave import given, step, use_step_matcher
 from src.api.RequestManager import RequestManager
 from src.util.ReadCfg import ReadCfg
 from src.pivotal_services.APISetter import APISetter
+import jsonschema
+import simplejson as json
+from src.util.read_file import ReadFile
 
 use_step_matcher("re")
 
@@ -42,3 +45,16 @@ def step_impl(context, endpoint):
         body = {row["field"]: row["content"]}
     context.last_response = context.req_helper.post_request(endpoint, body)
     context.id = context.last_response.json()['id']
+
+
+@step('I verify if the response status code is \"([^\"]*)\"')
+def step_impl(context, status_code):
+    assert (status_code == str(context.last_response.status_code)) is not None
+
+
+@step('I verify if the \"([^\"]*)\" body is correct')
+def step_impl(context, schema):
+    schema_data = ReadFile.get_file_validator('schema-' + schema + '.json')
+    schema_project = json.loads(schema_data)
+    jsonschema.validate(context.response.json(), schema_project)
+

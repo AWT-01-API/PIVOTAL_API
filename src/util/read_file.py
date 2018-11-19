@@ -5,7 +5,7 @@ class to read resources.
 """
 
 
-class ReadFle:
+class ReadFile:
     """
     get schema.
     """
