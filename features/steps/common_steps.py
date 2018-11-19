@@ -56,5 +56,5 @@ def step_impl(context, status_code):
 def step_impl(context, schema):
     schema_data = ReadFile.get_file_validator('schema-' + schema + '.json')
     schema_project = json.loads(schema_data)
-    jsonschema.validate(context.response.json(), schema_project)
+    jsonschema.validate(context.last_response.json(), schema_project)
 

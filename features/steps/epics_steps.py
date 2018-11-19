@@ -1,7 +1,7 @@
 from behave import then, step, use_step_matcher
 import jsonschema
 import simplejson as json
-from src.util.read_file import ReadFle
+from src.util.read_file import ReadFile
 
 use_step_matcher("re")
 
@@ -23,7 +23,7 @@ def step_impl(context):
 
 @then('I verify epic body is correct')
 def step_impl(context):
-    schema_data = ReadFle.get_file_validator('schema-epic.json')
+    schema_data = ReadFile.get_file_validator('schema-epic.json')
     schema_project = json.loads(schema_data)
     jsonschema.validate(context.response.json(), schema_project)
 

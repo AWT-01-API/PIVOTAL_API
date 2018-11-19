@@ -34,7 +34,7 @@ Feature: New Workspace
       | field | content |
       | name  | newName |
     Then I verify if the response status code is "200"
-    Then I verify if the "workspace3" body is correct
+    Then I verify if the "workspace" body is correct
     Then I verify if the field "name" of "workspace3" is correct
 
   Scenario: Delete a workspace
