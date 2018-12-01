@@ -1,6 +1,6 @@
 import jsonschema
 import simplejson as json
-from src.util.read_file import ReadFle
+from src.util.read_file import ReadFile
 
 """
 class with validation methods.
@@ -14,7 +14,7 @@ class ResponseValidator:
     """
     @staticmethod
     def validate_schema(validation_file, validation_obj):
-        schema_data = ReadFle.get_file_validator(validation_file)
+        schema_data = ReadFile.get_file_validator(validation_file)
         schema = json.loads(schema_data)
         # this line do the validation.
         jsonschema.validate(validation_obj.json(), schema)
