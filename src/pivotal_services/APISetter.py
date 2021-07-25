@@ -1,7 +1,7 @@
 from src.pivotal_services.PivotalServices import PivotalServices
 from src.api.RequestManager import RequestManager
 from src.util.ReadCfg import ReadCfg
-from src.util.Logger import Logger
+from src.util.LoggerHandler import LoggerHandler
 
 
 class APISetter(PivotalServices):
@@ -10,5 +10,6 @@ class APISetter(PivotalServices):
         super(APISetter, self).__init__("me")
         api_token = user.replace('user', 'apiToken')
         RequestManager(ReadCfg.get_value('apiUrl'))
-        RequestManager.instance.session.headers.update({"X-TrackerToken": ReadCfg.get_value(api_token)})
-        Logger.info(user + " token set")
+        token = ReadCfg.get_value(api_token)
+        RequestManager.instance.session.headers.update({"X-TrackerToken": token})
+        LoggerHandler.get_instance().info(user + ", " + token + " token set")

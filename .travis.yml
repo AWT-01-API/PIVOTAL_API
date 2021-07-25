@@ -1,14 +1,11 @@
 language: python
 python:
-  - "2.7"
+  - "3.9"
 
 
 # command to install dependencies
 install:
-  - pip install requests
-  - pip install jsonschema
-  - pip install simplejson
-  - pip install behave
+  - pip install -r requirements.txt
 
 # command to run tests
 script:
@@ -25,7 +22,7 @@ addons:
 
 notifications:
  email: true
-   - Bruno.Barrios@jalasoft.com
+   - sperbru797@gmail.com
 
 branches:
   only: develop
