@@ -1,0 +1,7 @@
+jsonschema
+simplejson
+requests
+ConfigParser
+behave
+allure-behave
+PyHamcrest

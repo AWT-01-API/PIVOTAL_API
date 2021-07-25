@@ -12,7 +12,9 @@ class ReadFile:
 
     @staticmethod
     def get_file_validator(file_name):
-        file_schema = open(os.path.abspath('features/resources/' + file_name))
+        schema_path = os.path.abspath('test/features/resources/' + file_name)
+        print("schema path: \n%s" % schema_path)
+        file_schema = open(schema_path)
         schema = file_schema.read()
         file_schema.close()
         return schema
