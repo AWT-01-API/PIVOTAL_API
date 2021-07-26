@@ -2,3 +2,5 @@
 *.pyc
 /venv/
 /pivotal.log
+/allure-results/
+/allure-report/
